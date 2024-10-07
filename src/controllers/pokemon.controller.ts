@@ -3,6 +3,7 @@ import {
     capturePokemon,
     getCapturedPokemons,
     getPokemons,
+    getPokemonTypes,
     importPokemons,
     releasePokemon,
 } from '../services/pokemon.service';
@@ -56,6 +57,15 @@ export const getCapturedPokemonsController = async (req: Request, res: Response)
     try {
         const pokemons = await getCapturedPokemons();
         res.json(pokemons);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const getPokemonTypesController = async (req: Request, res: Response) => {
+    try {
+        const types = await getPokemonTypes();
+        res.json(types);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

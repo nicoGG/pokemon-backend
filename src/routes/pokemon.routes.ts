@@ -5,6 +5,7 @@ import {
     capturePokemonController,
     releasePokemonController,
     getCapturedPokemonsController,
+    getPokemonTypesController,
 } from '../controllers/pokemon.controller';
 import { authMiddleware } from '../middleware/auth.middleware';
 
@@ -133,5 +134,23 @@ router.post('/release/:id', releasePokemonController);
  *         description: Error del servidor
  */
 router.get('/captured', getCapturedPokemonsController);
+
+/**
+ * @swagger
+ * /api/pokemon/captured:
+ *   get:
+ *     summary: Listar Tipos de Pokémon 
+ *     tags: [Pokémon]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Listar Tipos de Pokémon 
+ *       401:
+ *         description: No autorizado
+ *       500:
+ *         description: Error del servidor
+ */
+router.get('/types', getPokemonTypesController);
 
 export default router;

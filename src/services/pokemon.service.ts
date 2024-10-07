@@ -4,10 +4,14 @@ import { Pokemon } from '../models/pokemon.model';
 
 const POKEAPI_BASE_URL = 'https://pokeapi.co/api/v2';
 
+const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
 export const importPokemons = async (): Promise<void> => {
     for (let id = 1; id <= 150; id++) {
         const response = await axios.get(`${POKEAPI_BASE_URL}/pokemon/${id}`);
         const data = response.data;
+
+        const types = data.types.map((t: any) => capitalizeFirstLetter(t.type.name));
 
         await Pokemon.create({
             id: data.id,
@@ -93,4 +97,14 @@ export const getCapturedPokemons = async (): Promise<Pokemon[]> => {
         where: { captured: true },
         order: [['captureDate', 'DESC']],
     });
+};
+
+export const getPokemonTypes = async (): Promise<string[]> => {
+    try {
+        const response = await axios.get(`${POKEAPI_BASE_URL}/type`);
+        const types = response.data.results.map((type: any) => capitalizeFirstLetter(type.name));
+        return types;
+    } catch (error) {
+        throw new Error('Error al obtener los tipos de Pokémon');
+    }
 };
