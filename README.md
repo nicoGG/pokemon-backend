@@ -55,7 +55,7 @@ Este proyecto es una API construida con Node.js y TypeScript que interactúa con
 ### Clonar el Repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/pokeapi-ts.git
+git clone git@github.com:nicoGG/pokemon-backend.git
 cd pokeapi-ts
 ```
 
