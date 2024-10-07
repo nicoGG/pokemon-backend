@@ -56,7 +56,7 @@ Este proyecto es una API construida con Node.js y TypeScript que interactúa con
 
 ```bash
 git clone git@github.com:nicoGG/pokemon-backend.git
-cd pokeapi-ts
+cd pokemon-backend
 ```
 
 ### Configuración de Variables de Entorno
@@ -96,13 +96,13 @@ La API estará disponible en `http://localhost:3000`.
 ### Construir la Imagen de Docker
 
 ```bash
-docker build -t pokeapi-backend .
+docker build -t pokemon-backend .
 ```
 
 ### Ejecutar el Contenedor
 
 ```bash
-docker run -p 3000:3000 -v $(pwd)/data:/app/data --env SECRET_KEY=tu_clave_secreta pokeapi-backend
+docker run -p 3000:3000 -v $(pwd)/data:/app/data --env SECRET_KEY=tu_clave_secreta pokemon-backend
 ```
 
 **Nota**: Asegúrate de reemplazar `tu_clave_secreta` por tu clave secreta real.
